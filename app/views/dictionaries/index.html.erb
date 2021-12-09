@@ -1,8 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h1 class="title is-4 has-text-dark">
+  Dictionaries
+</h1>
 
-<h1>Dictionaries</h1>
+<div class="field is-grouped is-grouped-right">
+  <div class="control">
+    <%= link_to 'New Dictionary', new_dictionary_path, class: "button is-primary is-medium is-rounded" %>
+  </div>
+</div>
 
-<table>
+
+
+
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,10 +25,10 @@
   <tbody>
     <% @dictionaries.each do |dictionary| %>
       <tr>
-        <td><%= dictionary.name %></td>
-        <td><%= dictionary.description %></td>
-        <td><%= dictionary.fruit_id %></td>
-        <td><%= dictionary.pet_id %></td>
+        <td><%= truncate(dictionary.name, length: 20) %></td>
+        <td><%= truncate(dictionary.description, length: 50) %></td>
+        <td><%= (dictionary.fruit.name if dictionary.fruit) %></td>
+        <td><%= (dictionary.pet.name if dictionary.pet) %></td>
         <td><%= link_to 'Show', dictionary %></td>
         <td><%= link_to 'Edit', edit_dictionary_path(dictionary) %></td>
         <td><%= link_to 'Destroy', dictionary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,7 +36,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Dictionary', new_dictionary_path %>

@@ -1,24 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="content">
+  <h1><%= @dictionary.name %></h1>
+  <div class="tags are-medium">
+    <span class="tag is-info"><%= (@dictionary.fruit.name if @dictionary.fruit) %></span>
+    <span class="tag is-info"><%= (@dictionary.pet.name if @dictionary.pet) %></span>
+  </div>
+  <p><%= @dictionary.description %></p>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @dictionary.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @dictionary.description %>
-</p>
-
-<p>
-  <strong>Fruit:</strong>
-  <%= @dictionary.fruit_id %>
-</p>
-
-<p>
-  <strong>Pet:</strong>
-  <%= @dictionary.pet_id %>
-</p>
-
-<%= link_to 'Edit', edit_dictionary_path(@dictionary) %> |
-<%= link_to 'Back', dictionaries_path %>
+<div class="buttons">
+  <%= link_to 'Edit', edit_dictionary_path(@dictionary), class: 'button is-fullwidth' %>
+  <%= link_to 'Back', dictionaries_path, class: 'button is-fullwidth' %>
+</div>

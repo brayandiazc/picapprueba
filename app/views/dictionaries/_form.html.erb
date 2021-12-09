@@ -1,47 +1,96 @@
 <%= form_with(model: dictionary) do |form| %>
   <% if dictionary.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(dictionary.errors.count, "error") %> prohibited this dictionary from being saved:</h2>
-
-      <ul>
+    <article id="error_explanation" class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(dictionary.errors.count, "error") %> prohibited this dictionary from being saved:</p>
+        <button class="delete" aria-label="delete"></button>
+      </div>
+      <div class="message-body">
+        <ul>
         <% dictionary.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
-    </div>
+      </div>
+    </article>
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, autofocus: true, required: true, maxlength: 50 %>
+    <div class="control">
+      <%= form.label :name, class: "label" %>
+      <%= form.text_field :name,
+                          autofocus: true,
+                          required: true,
+                          maxlength: 50,
+                          placeholder: "Name",
+                          class: "input" %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, required: true, maxlength: 500 %>
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area  :description,
+                        required: true,
+                        maxlength: 500,
+                        placeholder: "Description",
+                        rows: 3,
+                        class: "textarea" %>
   </div>
 
-  <div class="field">
-    <%= form.label :fruit_id %>
-    <%= form.collection_select  :fruit_id,
-                                Fruit.all,
-                                :id,
-                                :name,
-                                required: true,
-                                include_blank:true %>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6">
+          </div>
+          <div class="column is-6">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :pet_id %>
-    <%= form.collection_select  :pet_id,
-                                Pet.all,
-                                :id,
-                                :name,
-                                required: true,
-                                include_blank:true %>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6">
+            <div class="field">
+              <%= form.label :fruit_id, class:"label" %>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <%= form.collection_select  :fruit_id,
+                                              Fruit.all,
+                                              :id,
+                                              :name,
+                                              required: true,
+                                              include_blank:true %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="field">
+              <%= form.label :pet_id, class:"label" %>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <%= form.collection_select  :pet_id,
+                                              Pet.all,
+                                              :id,
+                                              :name,
+                                              required: true,
+                                              include_blank:true %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <hr>
+  <div class="field has-text-centered">
+    <%= form.submit "Send",  class: "button is-primary is-medium is-fullwidth is-rounded" %>
   </div>
 <% end %>

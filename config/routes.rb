@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   resources :dictionaries
-  root 'dictionaries#index'
+  root 'dictionaries#new'
 end
