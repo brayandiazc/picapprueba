@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_012641) do
+ActiveRecord::Schema.define(version: 2021_12_09_013252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dictionaries", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.bigint "fruit_id", null: false
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fruit_id"], name: "index_dictionaries_on_fruit_id"
+    t.index ["pet_id"], name: "index_dictionaries_on_pet_id"
+  end
 
   create_table "fruits", force: :cascade do |t|
     t.string "name", null: false
@@ -29,4 +40,6 @@ ActiveRecord::Schema.define(version: 2021_12_09_012641) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "dictionaries", "fruits"
+  add_foreign_key "dictionaries", "pets"
 end

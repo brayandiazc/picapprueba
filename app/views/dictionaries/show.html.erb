@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dictionary.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @dictionary.description %>
+</p>
+
+<p>
+  <strong>Fruit:</strong>
+  <%= @dictionary.fruit_id %>
+</p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= @dictionary.pet_id %>
+</p>
+
+<%= link_to 'Edit', edit_dictionary_path(@dictionary) %> |
+<%= link_to 'Back', dictionaries_path %>
