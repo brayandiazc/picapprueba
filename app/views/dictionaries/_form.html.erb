@@ -13,22 +13,32 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, autofocus: true, required: true, maxlength: 50 %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, required: true, maxlength: 500 %>
   </div>
 
   <div class="field">
     <%= form.label :fruit_id %>
-    <%= form.text_field :fruit_id %>
+    <%= form.collection_select  :fruit_id,
+                                Fruit.all,
+                                :id,
+                                :name,
+                                required: true,
+                                include_blank:true %>
   </div>
 
   <div class="field">
     <%= form.label :pet_id %>
-    <%= form.text_field :pet_id %>
+    <%= form.collection_select  :pet_id,
+                                Pet.all,
+                                :id,
+                                :name,
+                                required: true,
+                                include_blank:true %>
   </div>
 
   <div class="actions">
