@@ -44,6 +44,10 @@ group :development do
   gem 'spring'
   # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
   gem 'annotate'
+  # Guard is a command line tool to easily handle events on file system modifications.
+  gem 'guard'
+  # Guard::LiveReload automatically reloads your browser when 'view' files are modified.
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :test do
